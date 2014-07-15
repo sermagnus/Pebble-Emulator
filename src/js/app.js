@@ -9,6 +9,7 @@ var Vector2 = require('./lib/vector2');
 var Settings = require('./settings');
 var Vibe = require('./ui/vibe');
 
+
 Settings.config(
   { url: 'configurable.html' },
   function(e) {
@@ -339,15 +340,15 @@ function demoVibration(){
         switch(e.item){
             
             case 0: // short
-                Vibe.vibration('short');
+                Vibe.vibrate('short');
                 break;
                 
             case 1: // long
-                Vibe.vibration('long');
+                Vibe.vibrate('long');
                 break;
                 
             case 2: // double
-                Vibe.vibration('double');
+                Vibe.vibrate('double');
                 break;
         }
     });
