@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Pebble.js</title>
+  
+  <link href="emulator/virtual-pebble.css" rel="stylesheet" type="text/css"/>
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="emulator/jquery.jrumble.1.3.min.js"></script>
+  
+  <script src='src/js/PebbleEmulator.js'></script>
+  <script src='emulator/VirtualPebble.js'></script>
+  <script src='emulator/strftime.js'></script>
+</head>
+<body>
+    
+    <button id="ShowConfiguration">Show Configuration</button>
+    
+    <div id="Pebble">
+        <div id="Viewport"></div>
+        
+        <div id="actions">
+            <button class="btn back" data-pebble-button="back" data-pebble-button-type="click">BACK</button>
+            <button class="btn up" data-pebble-button="up" data-pebble-button-type="click">UP</button>
+            <button class="btn select" data-pebble-button="select" data-pebble-button-type="click">SELECT</button>
+            <button class="btn down" data-pebble-button="down" data-pebble-button-type="click">DOWN</button>
+        </div>
+    </div>
+    
+    <script src='src/js/bundle-0.2.js'></script>
+    <script src='src/js/settings/bundle.js'></script>
+
+    <script>
+        $(window).load(function(){
+            $('#Pebble').virtualPebble(Pebble);
+            if(Pebble.getAppInfo().capabilities.indexOf('configurable')>-1){
+                $('#ShowConfiguration').click(function(){
+                    Pebble.triggerEvent('showConfiguration');
+                });
+            }else{
+                $('#ShowConfiguration').hide();
+            }
+        });
+    </script>    
+    
+</body>
+</html>
